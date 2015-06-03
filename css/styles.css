@@ -4,10 +4,27 @@
 
 .col1 {
   width: 50%;
+  text-align: center;
   float: left;
+  padding: 25px;
+  border-right: 2px solid #A8A8A8;
 }
 
 .col2 {
   width: 50%;
+  text-align: center;
   float: right;
+  padding: 25px;
+}
+
+.btn {
+  padding: 10px;
+}
+
+.game {
+  display: none;
+}
+
+.player2 {
+  display: none;
 }
