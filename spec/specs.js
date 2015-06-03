@@ -20,14 +20,22 @@ describe ("Player", function() {
 
   it("it will return rollValue as turn score if rollValue > 1", function() {
     var player1 = new Player("Spiderman", 0, 0);
-    var turnScore = player1.roll;
+    var turnScore = player1.roll();
     expect([0, 2, 3, 4, 5, 6]).to.contain(player1.turnScore);
   });
 
   it("it will accumulate roll values in turnScore for multiple rolls if rollValue >1", function() {
     var player1 = new Player("Spiderman", 0, 0);
-    var rollValue1 = player1.roll;
-    var rollValue2 = player1.roll;
+    var rollValue1 = player1.roll();
+    var rollValue2 = player1.roll();
     expect([0,4,5,6,7,8,9,10,11,12]).to.contain(player1.turnScore);
+  });
+
+  it("it will turn the turn score into the total score", function() {
+    var player1 = new Player("Spiderman", 0, 0);
+    var rollValue1 = player1.roll();
+    var rollValue2 = player1.roll();
+    player1.score();
+    expect([0,4,5,6,7,8,9,10,11,12]).to.contain(player1.totalScore);
   });
 });
