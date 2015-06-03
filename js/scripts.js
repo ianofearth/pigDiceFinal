@@ -26,6 +26,7 @@ $(function() {
   $("form#create-player").submit(function(event) {
     event.preventDefault();
     $(".game").show();
+    $(".form-hider").hide();
 
     var player1Name = $("input#player1-name").val();
     var player2Name = $("input#player2-name").val();
@@ -45,9 +46,11 @@ $(function() {
       if (player1RolledNumber === 1) {
         $(".player1").hide();
         $(".player2").show();
+        $(".player1-scored1").show();
       }
       $(".player1-rolled-number").text(player1RolledNumber);
       $(".player1-turn-score").text(player1.turnScore);
+      $(".player2-scored1").hide();
     });
 
     $("button#player1-hold").click(function(event) {
@@ -56,11 +59,15 @@ $(function() {
       $(".player1-total-score").text(player1.totalScore);
       $(".player1-rolled-number").text("");
       $(".player1-turn-score").text("");
+      if (player1.totalScore >= 100) {
+        $(".game").hide();
+        $(".player1-victory").show();
+      } else {
       $(".player1").hide();
       $(".player2").show();
+      $(".player2-scored1").hide();
+      }
     });
-
-
 
     $(".player2-name").text(player2.playerName);
     $(".player2-total-score").html("<span class='player2-total-score'>" + player2.totalScore + "</span>");
@@ -71,6 +78,8 @@ $(function() {
       if (player2RolledNumber === 1) {
         $(".player2").hide();
         $(".player1").show();
+        $(".player2-scored1").show();
+        $(".player1-scored1").hide();
       }
       $(".player2-rolled-number").text(player2RolledNumber);
       $(".player2-turn-score").text(player2.turnScore);
@@ -82,8 +91,14 @@ $(function() {
       $(".player2-total-score").text(player2.totalScore);
       $(".player2-rolled-number").text("");
       $(".player2-turn-score").text("");
+      if (player2.totalScore >= 100) {
+        $(".game").hide();
+        $(".player2-victory").show();
+      } else {
       $(".player1").show();
       $(".player2").hide();
+      $(".player1-scored1").hide();
+      }
     });
 
 

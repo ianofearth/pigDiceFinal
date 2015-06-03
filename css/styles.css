@@ -6,7 +6,7 @@
   width: 50%;
   text-align: center;
   float: left;
-  padding: 25px;
+  padding: 10px;
   border-right: 2px solid #A8A8A8;
 }
 
@@ -27,4 +27,44 @@
 
 .player2 {
   display: none;
+}
+
+.player1-victory {
+  display: none;
+}
+
+.player2-victory {
+  display: none;
+}
+
+.player1-scored1 {
+  display: none;
+}
+
+.player2-scored1 {
+  display: none;
+  padding: 20px;
+}
+
+.form-hider {
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  padding: 5px;
+  background-color: #337ab7;
+  color: white;
+  border-color: #2e6da4;
+  border-radius: 25px;
+}
+
+.rules  {
+  width: 100%;
+  padding: 10px;
+  background-color: #337ab7;
+  color: white;
+  border-color: #2e6da4;
+  border-radius: 25px;
+  text-align:center;
 }
