@@ -143,7 +143,7 @@ $(function() {
       }
     });
 
-    $("button.reset").click(function(event) {
+    $("button#reset").click(function(event) {
       event.preventDefault();
       $(".form-hider").show();
       $(".player1-victory").hide();
