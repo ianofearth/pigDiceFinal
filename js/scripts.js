@@ -35,22 +35,35 @@ $(function() {
     var player2 = new Player(player2Name, 0, 0)
     allPlayers.push(player1);
     allPlayers.push(player2);
-
+    var numberDice = parseInt($('input#dice_number').val());
+    var allRolls = [];
+    var playTo = parseInt($('input#play_to').val());
 
     $(".player1-name").text(player1.playerName);
     $(".player1-total-score").html("<span class='player1-total-score'>" + player1.totalScore + "</span>");
 
     $("button#player1-roll").click(function(event) {
       event.preventDefault();
-      var player1RolledNumber = player1.roll();
-      if (player1RolledNumber === 1) {
+      allRolls = [];
+      for (var rolls = 1; rolls <= numberDice; rolls +=1) {
+        var roll = player1.roll();
+        allRolls.push(roll);
+      }
+      if (allRolls.indexOf(1) === -1) {
+        allRolls.forEach(function(diceRoll) {
+          $(".player1-rolled-number").text(allRolls);
+          $(".player1-turn-score").text(player1.turnScore);
+          $(".player2-scored1").hide();
+        });
+      } else {
+        player1.turnScore = 0;
         $(".player1").hide();
         $(".player2").show();
         $(".player1-scored1").show();
+        $(".player2-scored1").hide();
+        $(".player1-rolled-number").text("");
+        $(".player1-turn-score").text("");
       }
-      $(".player1-rolled-number").text(player1RolledNumber);
-      $(".player1-turn-score").text(player1.turnScore);
-      $(".player2-scored1").hide();
     });
 
     $("button#player1-hold").click(function(event) {
@@ -59,7 +72,8 @@ $(function() {
       $(".player1-total-score").text(player1.totalScore);
       $(".player1-rolled-number").text("");
       $(".player1-turn-score").text("");
-      if (player1.totalScore >= 100) {
+      //changed 100 to play to
+      if (player1.totalScore >= playTo) {
         $(".game").hide();
         $(".player1-victory").show();
       } else {
@@ -74,16 +88,41 @@ $(function() {
 
     $("button#player2-roll").click(function(event) {
       event.preventDefault();
-      var player2RolledNumber = player2.roll();
-      if (player2RolledNumber === 1) {
+      allRolls = [];
+      for (var rolls = 1; rolls <= numberDice; rolls +=1) {
+        var roll = player2.roll();
+        allRolls.push(roll);
+      }
+      if (allRolls.indexOf(1) === -1) {
+        allRolls.forEach(function(diceRoll) {
+          $(".player2-rolled-number").text(allRolls);
+          $(".player2-turn-score").text(player2.turnScore);
+          $(".player1-scored1").hide();
+        });
+      } else {
+        player2.turnScore = 0;
         $(".player2").hide();
         $(".player1").show();
         $(".player2-scored1").show();
         $(".player1-scored1").hide();
+        $(".player2-rolled-number").text("");
+        $(".player2-turn-score").text("");
       }
-      $(".player2-rolled-number").text(player2RolledNumber);
-      $(".player2-turn-score").text(player2.turnScore);
     });
+
+
+    // $("button#player2-roll").click(function(event) {
+    //   event.preventDefault();
+    //   var player2RolledNumber = player2.roll();
+    //   if (player2RolledNumber === 1) {
+    //     $(".player2").hide();
+    //     $(".player1").show();
+    //     $(".player2-scored1").show();
+    //     $(".player1-scored1").hide();
+    //   }
+    //   $(".player2-rolled-number").text(player2RolledNumber);
+    //   $(".player2-turn-score").text(player2.turnScore);
+    // });
 
     $("button#player2-hold").click(function(event) {
       event.preventDefault();
@@ -91,7 +130,7 @@ $(function() {
       $(".player2-total-score").text(player2.totalScore);
       $(".player2-rolled-number").text("");
       $(".player2-turn-score").text("");
-      if (player2.totalScore >= 100) {
+      if (player2.totalScore >= playTo) {
         $(".game").hide();
         $(".player2-victory").show();
       } else {

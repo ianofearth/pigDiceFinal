@@ -29,22 +29,19 @@
   display: none;
 }
 
-.player1-victory {
+.player1-victory, .player2-victory {
   display: none;
+  text-align: center;
 }
 
-.player2-victory {
-  display: none;
-}
 
-.player1-scored1 {
-  display: none;
-}
-
-.player2-scored1 {
+.player1-scored1, .player2-scored1 {
   display: none;
   padding: 20px;
+  text-align: center;
 }
+
+
 
 .form-hider {
   text-align: center;
@@ -66,5 +63,5 @@
   color: white;
   border-color: #2e6da4;
   border-radius: 25px;
-  text-align:center;
+  text-align: center;
 }
