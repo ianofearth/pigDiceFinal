@@ -29,12 +29,16 @@
             <br>
             <label for="final_score">How many points are you playing to? </label>
             <input type="number" class="form-control" id="play_to">
+            <br>
             <button type="submit" class="btn btn-primary">Begin game</button>
           </form>
         </div>
       </div>
 
       <div class="game">
+        <div class="playToScore">
+          <h3>You are playing to <span class="playTo"></span> points.</h3>
+        </div>
         <div class="col1">
           <h4>Player: <span class="player1-name"></span></h4>
           <h5>Total Score: <span class="player1-total-score"></span></h5>
@@ -74,9 +78,13 @@
 
       <div class="player1-victory">
         <h1>PLAYER 1 WINS ICECREAM!!!</h1>
+        <img src="img/victory_pig.jpg" class="img1" alt="victory pig">
+        <button type="submit" class="reset">Play Again!</button>
       </div>
       <div class="player2-victory">
         <h1>PLAYER 2 WINS ICECREAM!!!</h1>
+        <img src="img/victory_pig.jpg" class="img1" alt="victory pig">
+        <button type="submit" class="reset">Play Again!</button>
       </div>
 
 

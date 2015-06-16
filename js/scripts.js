@@ -39,6 +39,9 @@ $(function() {
     var allRolls = [];
     var playTo = parseInt($('input#play_to').val());
 
+    $(".playTo").text(playTo);
+    $(".player1").show();
+
     $(".player1-name").text(player1.playerName);
     $(".player1-total-score").html("<span class='player1-total-score'>" + player1.totalScore + "</span>");
 
@@ -138,6 +141,24 @@ $(function() {
       $(".player2").hide();
       $(".player1-scored1").hide();
       }
+    });
+
+    $("button.reset").click(function(event) {
+      event.preventDefault();
+      $(".form-hider").show();
+      $(".player1-victory").hide();
+      $(".player2-victory").hide();
+      player1.totalScore = 0;
+      player2.totalScore = 0;
+      $(".player1-rolled-number").text("");
+      $(".player1-turn-score").text("");
+      $(".player1-total-score").text("");
+      $(".player2-rolled-number").text("");
+      $(".player2-turn-score").text("");
+      $(".player2-total-score").text("");
+      $(".player1").hide();
+      $(".player2").hide();
+
     });
 
 
